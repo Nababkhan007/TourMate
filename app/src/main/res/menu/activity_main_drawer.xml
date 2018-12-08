@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/travelEventMenuId"
+            android:icon="@drawable/ic_event_black_24dp"
+            android:title="Travel event" />
+
+        <item
+            android:id="@+id/travelEventExpenseMenuId"
+            android:icon="@drawable/ic_attach_money_black_24dp"
+            android:title="Travel expense" />
+
+        <item
+            android:id="@+id/nearbyPlaceMenuId"
+            android:icon="@drawable/ic_place_black_24dp"
+            android:title="Nearby Place" />
+
+        <item
+            android:id="@+id/travelMomentMenuId"
+            android:icon="@drawable/ic_image_black_24dp"
+            android:title="Travel moment" />
+
+        <item
+            android:id="@+id/weatherUpdateMenuId"
+            android:icon="@drawable/ic_cloud_black_24dp"
+            android:title="Weather update" />
+
+        <item
+            android:id="@+id/profileMenuId"
+            android:icon="@drawable/ic_person_white_24dp"
+            android:title="Profile" />
+
+        <item
+            android:id="@+id/logOutMenuId"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Log out" />
+    </group>
+
+</menu>

@@ -1,4 +1,4 @@
-package com.example.nabab.tourmate;
+package com.example.nabab.tourmate.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nabab.tourmate.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -19,8 +20,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText loginEmailEt, loginPasswordEt;
-    private Button loginLoginBtn;
-    private TextView loginSignInTv;
+    private Button loginLoginBtn, loginSignUpBtn;
+    /*private TextView loginSignInTv;*/
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -33,7 +34,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void onClick() {
-        loginSignInTv.setOnClickListener(new View.OnClickListener() {
+        /*loginSignInTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
+            }
+        });*/
+
+        loginSignUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
@@ -47,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                 String password = loginPasswordEt.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
-                    loginEmailEt.setError("Enter a mail");
+                    loginEmailEt.setError("Enter a email");
                     loginEmailEt.requestFocus();
                     return;
 
@@ -75,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginWithEmailAndPassword(String email, String password) {
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
-        progressDialog.setMessage("Please wait...");
+        progressDialog.setMessage("Please waiting...");
         progressDialog.show();
 
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -100,8 +108,9 @@ public class LoginActivity extends AppCompatActivity {
         loginPasswordEt = findViewById(R.id.loginPasswordEtId);
 
         loginLoginBtn = findViewById(R.id.loginLoginBtnId);
+        loginSignUpBtn = findViewById(R.id.loginSignUpBtnId);
 
-        loginSignInTv = findViewById(R.id.loginSignInTvId);
+        /*loginSignInTv = findViewById(R.id.loginSignInTvId);*/
 
         firebaseAuth = FirebaseAuth.getInstance();
         if (firebaseAuth.getCurrentUser() != null) {

@@ -1,4 +1,4 @@
-package com.example.nabab.tourmate;
+package com.example.nabab.tourmate.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,6 +12,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nabab.tourmate.Class.FirebaseDatabaseReference;
+import com.example.nabab.tourmate.PojoClass.UsersPojo;
+import com.example.nabab.tourmate.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -20,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SignUpActivity extends AppCompatActivity {
     private EditText signUpEmailEt, signUpPasswordEt, signUpConfirmPasswordEt;
     private Button signUpSignUpBtn;
-    private TextView signUpLoginTv;
+    /*private TextView signUpLoginTv;*/
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -33,12 +36,12 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void onClick() {
-        signUpLoginTv.setOnClickListener(new View.OnClickListener() {
+        /*signUpLoginTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
             }
-        });
+        });*/
 
         signUpSignUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +91,7 @@ public class SignUpActivity extends AppCompatActivity {
                     String userId = firebaseAuth.getCurrentUser().getUid();
 
                     final ProgressDialog progressDialog = new ProgressDialog(SignUpActivity.this);
-                    progressDialog.setMessage("Please wait...");
+                    progressDialog.setMessage("Please waiting...");
                     progressDialog.show();
 
                     UsersPojo usersPojo = new UsersPojo(email, password);
@@ -99,7 +102,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 progressDialog.dismiss();
                                 Toast.makeText(SignUpActivity.this, "Thank you for sign up!", Toast.LENGTH_SHORT).show();
 
-                                /*startActivity(new Intent(SignUpActivity.this, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));*/
+                                startActivity(new Intent(SignUpActivity.this, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
 
                             }else {
                                 progressDialog.dismiss();
@@ -123,7 +126,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         signUpSignUpBtn = findViewById(R.id.signUpSignUpBtnId);
 
-        signUpLoginTv = findViewById(R.id.signUpLoginTvId);
+        /*signUpLoginTv = findViewById(R.id.signUpLoginTvId);*/
 
         firebaseAuth = FirebaseAuth.getInstance();
     }

@@ -1,4 +1,4 @@
-package com.example.nabab.tourmate;
+package com.example.nabab.tourmate.Class;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
